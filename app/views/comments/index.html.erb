@@ -18,7 +18,7 @@
       <% @comments.each do |comment| %>
       <tr>
         <td><%= comment.comment %></td>
-        <td><%= comment.user_id %></td>
+        <td><%= comment.user.created_at %></td>
         <td><%= comment.trail_id %></td>
         <td>
           <a href="/comments/<%= comment.id %>" class="btn btn-primary">Show</a>
