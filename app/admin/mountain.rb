@@ -1,6 +1,6 @@
 ActiveAdmin.register Mountain do
 
- permit_params :mountain_name, :location, :vertical_feet, :skiable_acres, :number_of_trails
+ permit_params :mountain_name, :location, :vertical_feet, :skiable_acres, :number_of_trails, :mountain_trail_difficulties
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
