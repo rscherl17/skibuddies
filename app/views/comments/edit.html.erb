@@ -27,14 +27,8 @@
         <input type="text" id="comment" name="comment" placeholder="Comment" class="form-control" value="<%= @comment.comment %>">
       </div>
 
-      <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :created_at, @comment.user_id), :class => "form-control") %>
-      </div>
+      
+      
 
       <!-- Label and input for trail_id -->
       <div class="form-group">
