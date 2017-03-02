@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Trail resource:
+  # CREATE
+  get "/trails/new", :controller => "trails", :action => "new"
+  post "/create_trail", :controller => "trails", :action => "create"
+
+  # READ
+  get "/trails", :controller => "trails", :action => "index"
+  get "/trails/:id", :controller => "trails", :action => "show"
+
+  # UPDATE
+  get "/trails/:id/edit", :controller => "trails", :action => "edit"
+  post "/update_trail/:id", :controller => "trails", :action => "update"
+
+  # DELETE
+  get "/delete_trail/:id", :controller => "trails", :action => "destroy"
+  #------------------------------
+
   # Routes for the Mountain resource:
   # CREATE
   get "/mountains/new", :controller => "mountains", :action => "new"

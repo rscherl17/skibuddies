@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1>
+    Trails
+    <a href="/trails/new" class="btn btn-lg btn-success">New Trail</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Trail name</th>
+        <th>Mountain</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @trails.each do |trail| %>
+      <tr>
+        <td><%= trail.trail_name %></td>
+        <td><%= trail.mountain_id %></td>
+        <td>
+          <a href="/trails/<%= trail.id %>" class="btn btn-primary">Show</a>
+          <a href="/trails/<%= trail.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_trail/<%= trail.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
