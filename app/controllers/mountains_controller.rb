@@ -28,7 +28,6 @@ class MountainsController < ApplicationController
     @mountain.vertical_feet = params[:vertical_feet]
     @mountain.skiable_acres = params[:skiable_acres]
     @mountain.number_of_trails = params[:number_of_trails]
-    @mountain.mountain_trail_difficulties = params[:mountain_trail_difficulties]
 
     save_status = @mountain.save
 
@@ -60,7 +59,6 @@ class MountainsController < ApplicationController
     @mountain.vertical_feet = params[:vertical_feet]
     @mountain.skiable_acres = params[:skiable_acres]
     @mountain.number_of_trails = params[:number_of_trails]
-    @mountain.mountain_trail_difficulties = params[:mountain_trail_difficulties]
 
     save_status = @mountain.save
 
