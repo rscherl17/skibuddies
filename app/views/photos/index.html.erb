@@ -16,8 +16,20 @@
 
       <% @photos.each do |photo| %>
       <tr>
-        <td><%= photo.user.created_at %></td>
-        <td><%= photo.mountain.mountain_name %></td>
+        <td>
+          <% if photo.user.present? %>
+            <a href="/users/<%= photo.user.id %>">
+              <%= photo.user.created_at %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if photo.mountain.present? %>
+            <a href="/mountains/<%= photo.mountain.id %>">
+              <%= photo.mountain.mountain_name %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
           

@@ -9,7 +9,13 @@
       <dd><%= @trail.trail_name %></dd>
 
       <dt>Mountain</dt>
-      <dd><%= @trail.mountain_id %></dd>
+      <dd>
+        <% if @trail.mountain.present? %>
+          <a href="/mountains/<%= @trail.mountain_id %>">
+            <%= @trail.mountain.mountain_name %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

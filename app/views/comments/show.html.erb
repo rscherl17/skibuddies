@@ -9,10 +9,22 @@
       <dd><%= @comment.comment %></dd>
 
       <dt>User</dt>
-      <dd><%= @comment.user_id %></dd>
+      <dd>
+        <% if @comment.user.present? %>
+          <a href="/users/<%= @comment.user_id %>">
+            <%= @comment.user.created_at %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Trail</dt>
-      <dd><%= @comment.trail_id %></dd>
+      <dd>
+        <% if @comment.trail.present? %>
+          <a href="/trails/<%= @comment.trail_id %>">
+            <%= @comment.trail.trail_name %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

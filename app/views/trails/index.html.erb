@@ -17,7 +17,13 @@
       <% @trails.each do |trail| %>
       <tr>
         <td><%= trail.trail_name %></td>
-        <td><%= trail.mountain.mountain_name %></td>
+        <td>
+          <% if trail.mountain.present? %>
+            <a href="/mountains/<%= trail.mountain.id %>">
+              <%= trail.mountain.mountain_name %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/trails/<%= trail.id %>" class="btn btn-primary">Show</a>
           <a href="/trails/<%= trail.id %>/edit" class="btn btn-warning">Edit</a>
