@@ -1,6 +1,6 @@
 class TrailsController < ApplicationController
   def index
-    @trails = Trail.all
+    @trails = Trail.page(params[:page]).per(10)
 
     render("trails/index.html.erb")
   end

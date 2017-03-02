@@ -1,6 +1,6 @@
 class MountainsController < ApplicationController
   def index
-    @mountains = Mountain.all
+    @mountains = Mountain.page(params[:page]).per(10)
 
     render("mountains/index.html.erb")
   end
