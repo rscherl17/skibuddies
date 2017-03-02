@@ -42,7 +42,7 @@
           Trail
         </label>
 
-        <input type="text" id="trail_id" name="trail_id" placeholder="Trail" class="form-control" value="<%= @comment.trail_id %>">
+        <%= select_tag(:trail_id, options_from_collection_for_select(Trail.all, :id, :trail_name, @comment.trail_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">
