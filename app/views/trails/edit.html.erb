@@ -33,7 +33,7 @@
           Mountain
         </label>
 
-        <input type="text" id="mountain_id" name="mountain_id" placeholder="Mountain" class="form-control" value="<%= @trail.mountain_id %>">
+        <%= select_tag(:mountain_id, options_from_collection_for_select(Mountain.all, :id, :mountain_name, @trail.mountain_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-warning">
