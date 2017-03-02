@@ -1,6 +1,7 @@
 class MountainsController < ApplicationController
   def index
-    @mountains = Mountain.page(params[:page]).per(10)
+    @q = Mountain.ransack(params[:q])
+    @mountains = @q.result(:distinct => true).includes(:trails, :photos).page(params[:page]).per(10)
 
     render("mountains/index.html.erb")
   end

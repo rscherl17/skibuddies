@@ -1,6 +1,7 @@
 class TrailsController < ApplicationController
   def index
-    @trails = Trail.page(params[:page]).per(10)
+    @q = Trail.ransack(params[:q])
+    @trails = @q.result(:distinct => true).includes(:mountain, :comments).page(params[:page]).per(10)
 
     render("trails/index.html.erb")
   end
