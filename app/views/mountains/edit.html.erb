@@ -1,0 +1,73 @@
+<!-- Validation failure messages -->
+<% if @mountain.errors.any? %>
+  <% @mountain.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Mountain #<%= @mountain.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_mountain/<%= @mountain.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for mountain_name -->
+      <div class="form-group">
+        <label for="mountain_name" class="control-label">
+          Mountain name
+        </label>
+
+        <input type="text" id="mountain_name" name="mountain_name" placeholder="Mountain name" class="form-control" value="<%= @mountain.mountain_name %>">
+      </div>
+
+      <!-- Label and input for location -->
+      <div class="form-group">
+        <label for="location" class="control-label">
+          Location
+        </label>
+
+        <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @mountain.location %>">
+      </div>
+
+      <!-- Label and input for vertical_feet -->
+      <div class="form-group">
+        <label for="vertical_feet" class="control-label">
+          Vertical feet
+        </label>
+
+        <input type="text" id="vertical_feet" name="vertical_feet" placeholder="Vertical feet" class="form-control" value="<%= @mountain.vertical_feet %>">
+      </div>
+
+      <!-- Label and input for skiable_acres -->
+      <div class="form-group">
+        <label for="skiable_acres" class="control-label">
+          Skiable acres
+        </label>
+
+        <input type="text" id="skiable_acres" name="skiable_acres" placeholder="Skiable acres" class="form-control" value="<%= @mountain.skiable_acres %>">
+      </div>
+
+      <!-- Label and input for number_of_trails -->
+      <div class="form-group">
+        <label for="number_of_trails" class="control-label">
+          Number of trails
+        </label>
+
+        <input type="text" id="number_of_trails" name="number_of_trails" placeholder="Number of trails" class="form-control" value="<%= @mountain.number_of_trails %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Mountain
+      </button>
+      or
+      <a href="/mountains/<%= @mountain.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
