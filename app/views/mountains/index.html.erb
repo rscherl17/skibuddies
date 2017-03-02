@@ -1,7 +1,10 @@
 <div class="page-header">
   <h1>
     Mountains
+    <% if current_user.admin == true %>
     <a href="/mountains/new" class="btn btn-lg btn-success">New Mountain</a>
+    <% else %>
+    <% end %>
   </h1>
 </div><div class="row mb-1">
   <div class="col-md-12">
@@ -108,9 +111,13 @@
         <td><%= mountain.skiable_acres %></td>
         <td><%= mountain.number_of_trails %></td>
         <td>
+          <% if current_user.admin == false %>
+          <a href="/mountains/<%= mountain.id %>" class="btn btn-primary">Show</a>
+          <% else %>
           <a href="/mountains/<%= mountain.id %>" class="btn btn-primary">Show</a>
           <a href="/mountains/<%= mountain.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_mountain/<%= mountain.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
