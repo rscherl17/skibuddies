@@ -6,6 +6,7 @@ class CreateMountains < ActiveRecord::Migration
       t.string :vertical_feet
       t.string :skiable_acres
       t.string :number_of_trails
+      t.string :mountain_trail_difficulties
 
       t.timestamps
 
