@@ -35,3 +35,65 @@
     </div>
   </div>
 </div>
+
+<!-- A Mountain has many trails -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Trails
+      </li>
+
+      <% @mountain.trails.each do |trail| %>
+        <li class="list-group-item">
+          <a href="/trails/<%= trail.id %>">
+            <%= trail.trail_name %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/trails/<%= trail.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/trails/<%= trail.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_trail/<%= trail.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A Mountain has many photos -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Photos
+      </li>
+
+      <% @mountain.photos.each do |photo| %>
+        <li class="list-group-item">
+          <a href="/photos/<%= photo.id %>">
+            <%= photo.user_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/photos/<%= photo.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
