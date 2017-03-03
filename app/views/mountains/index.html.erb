@@ -8,7 +8,7 @@
   </h1>
 </div><div class="row mb-1">
   <div class="col-md-12">
-    <%= search_form_for @q, :class => collapse_search_form, :id => "mountains_filters" do |f| %>
+    <%= search_form_for @q, :id => "mountains_filters" do |f| %>
       <p class="lead">Narrow results:</p>
 
         <div class="form-group">
@@ -85,9 +85,6 @@
 
       <a href="/mountains" class="btn btn-default btn-block mb-1">Clear filters</a>
     <% end %>
-    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#mountains_filters">
-      Show Filters
-    </a>
   </div>
 </div>
 

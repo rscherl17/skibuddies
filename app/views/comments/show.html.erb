@@ -12,7 +12,7 @@
       <dd>
         <% if @comment.user.present? %>
           <a href="/users/<%= @comment.user_id %>">
-            <%= @comment.user.created_at %>
+            <%= @comment.user.email %>
           </a>
         <% end %>
       </dd>

@@ -124,7 +124,7 @@
         <td>
           <% if comment.user.present? %>
             <a href="/users/<%= comment.user.id %>">
-              <%= comment.user.created_at %>
+              <%= comment.user.email %>
             </a>
           <% end %>
         </td>
@@ -137,7 +137,7 @@
         </td>
         <td>
           <a href="/comments/<%= comment.id %>" class="btn btn-primary">Show</a>
-          
+
           <% if current_user == comment.user %>
             <a href="/comments/<%= comment.id %>/edit" class="btn btn-warning">Edit</a>
             <a href="/delete_comment/<%= comment.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
