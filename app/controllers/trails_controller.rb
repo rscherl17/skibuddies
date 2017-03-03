@@ -9,6 +9,7 @@ class TrailsController < ApplicationController
   def show
     @comment = Comment.new
     @trail = Trail.find(params[:id])
+    @mountain = @trail.mountain_id
 
     render("trails/show.html.erb")
   end

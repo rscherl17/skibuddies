@@ -11,7 +11,6 @@ class MountainsController < ApplicationController
     @trail = Trail.new
     @mountain = Mountain.find(params[:id])
 
-
     render("mountains/show.html.erb")
   end
 

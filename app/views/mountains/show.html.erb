@@ -15,7 +15,7 @@
       <dd><%= @mountain.skiable_acres %></dd>
 
       <dt>Number of trails</dt>
-      <dd><%= @mountain.number_of_trails %></dd>
+      <dd><%= @mountain.trails.count %></dd>
 
     </dl>
 
@@ -42,7 +42,7 @@
 <!-- A Mountain has many trails -->
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
         Trails
@@ -100,12 +100,12 @@
       </li>
     </ul>
   </div>
-</div>
+
 
 <!-- A Mountain has many photos -->
 
-<div class="row">
-  <div class="col-md-12">
+
+  <div class="col-md-6">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
         Photos

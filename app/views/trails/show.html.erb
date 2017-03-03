@@ -18,11 +18,11 @@
 
     <div class="btn-group btn-group-justified">
       <% if current_user.admin == false %>
-      <a href="/trails" class="btn btn-primary">
+      <a href="/mountains/<%= @trail.mountain_id %>" class="btn btn-primary">
         Back
       </a>
       <% else %>
-      <a href="/trails" class="btn btn-primary">
+      <a href="/mountains/<%= @trail.mountain_id %>" class="btn btn-primary">
         Back
       </a>
       <a href="/trails/<%= @trail.id %>/edit" class="btn btn-warning">

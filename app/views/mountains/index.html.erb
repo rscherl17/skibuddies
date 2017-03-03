@@ -109,7 +109,7 @@
         <td><%= mountain.location %></td>
         <td><%= mountain.vertical_feet %></td>
         <td><%= mountain.skiable_acres %></td>
-        <td><%= mountain.number_of_trails %></td>
+        <td><%= mountain.trails.count %></td>
         <td>
           <% if current_user.admin == false %>
           <a href="/mountains/<%= mountain.id %>" class="btn btn-primary">Show</a>
