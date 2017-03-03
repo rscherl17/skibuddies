@@ -1,10 +1,13 @@
 <div class="page-header">
-  <h3><%= @mountain.mountain_name %></h3>
+  <h3>Mountain #<%= @mountain.id %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
+      <dt>Mountain name</dt>
+      <dd><%= @mountain.mountain_name %></dd>
+
       <dt>Location</dt>
       <dd><%= @mountain.location %></dd>
 
@@ -15,16 +18,11 @@
       <dd><%= @mountain.skiable_acres %></dd>
 
       <dt>Number of trails</dt>
-      <dd><%= @mountain.trails.count %></dd>
+      <dd><%= @mountain.number_of_trails %></dd>
 
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <% if current_user.admin == false %>
-      <a href="/mountains" class="btn btn-primary">
-        Back
-      </a>
-      <% else %>
       <a href="/mountains" class="btn btn-primary">
         Back
       </a>
@@ -34,7 +32,6 @@
       <a href="/delete_mountain/<%= @mountain.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
-      <% end %>
     </div>
   </div>
 </div>
@@ -42,14 +39,32 @@
 <!-- A Mountain has many trails -->
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
         Trails
       </li>
 
+      <% @mountain.trails.each do |trail| %>
+        <li class="list-group-item">
+          <a href="/trails/<%= trail.id %>">
+            <%= trail.trail_name %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/trails/<%= trail.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/trails/<%= trail.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_trail/<%= trail.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+
       <li class="list-group-item">
-        <% if current_user.admin == true %>
         <form action="/create_trail" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
@@ -69,43 +84,16 @@
       <button class="btn btn-block btn-success">
         Create Trail
       </button>
-      <% else %>
-      <% end %>
     </form>
-
-      <% @mountain.trails.each do |trail| %>
-        <li class="list-group-item">
-          <a href="/trails/<%= trail.id %>">
-            <%= trail.trail_name %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <% if current_user.admin == false %>
-            <a href="/trails/<%= trail.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <% else %>
-            <a href="/trails/<%= trail.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/trails/<%= trail.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_trail/<%= trail.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-            <% end %>
-          </div>
-        </li>
-        <% end %>
       </li>
     </ul>
   </div>
-
+</div>
 
 <!-- A Mountain has many photos -->
 
-
-  <div class="col-md-6">
+<div class="row">
+  <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
         Photos
@@ -131,9 +119,18 @@
       <% end %>
 
       <li class="list-group-item">
-        <form action="/create_photo" method="post">
+        <form action="/create_photo" method="post" enctype="multipart/form-data">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for image -->
+      <div class="form-group">
+        <label for="image" class="control-label">
+          Image
+        </label>
+
+        <input type="file" id="image" name="image" class="form-control">
+      </div>
 
       <!-- Label and input for user_id -->
       <input type="hidden" name="user_id" value="<%= current_user.id %>">
