@@ -1,10 +1,13 @@
 <div class="page-header">
-  <h3><%= @trail.trail_name %></h3>
+  <h3>Trail #<%= @trail.id %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
+      <dt>Trail name</dt>
+      <dd><%= @trail.trail_name %></dd>
+
       <dt>Mountain</dt>
       <dd>
         <% if @trail.mountain.present? %>
@@ -17,12 +20,7 @@
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <% if current_user.admin == false %>
-      <a href="/mountains/<%= @trail.mountain_id %>" class="btn btn-primary">
-        Back
-      </a>
-      <% else %>
-      <a href="/mountains/<%= @trail.mountain_id %>" class="btn btn-primary">
+      <a href="/trails" class="btn btn-primary">
         Back
       </a>
       <a href="/trails/<%= @trail.id %>/edit" class="btn btn-warning">
@@ -31,7 +29,6 @@
       <a href="/delete_trail/<%= @trail.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
-      <% end %>
     </div>
   </div>
 </div>
@@ -51,7 +48,6 @@
             <%= comment.created_at %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
-            <% if current_user.id == comment_user.id %>
             <a href="/comments/<%= comment.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
@@ -61,11 +57,6 @@
             <a href="/delete_comment/<%= comment.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
-            <% else %>
-            <a href="/comments/<%= comment.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <% end %>
           </div>
         </li>
       <% end %>
