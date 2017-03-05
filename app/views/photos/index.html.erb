@@ -117,10 +117,11 @@
         <td>
           <% if photo.user.present? %>
             <a href="/users/<%= photo.user.id %>">
-              <%= photo.user.created_at %>
+              <%= photo.user.email %>
             </a>
           <% end %>
         </td>
+      
         <td>
           <% if photo.mountain.present? %>
             <a href="/mountains/<%= photo.mountain.id %>">

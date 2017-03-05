@@ -21,11 +21,11 @@
 
     <div class="btn-group btn-group-justified">
       <% if current_user.admin == false %>
-      <a href="/mountains" class="btn btn-primary">
+      <a href="javascript:history.back()" class="btn btn-primary">
         Back
       </a>
       <% else %>
-      <a href="/mountains" class="btn btn-primary">
+      <a href="javascript:history.back()" class="btn btn-primary">
         Back
       </a>
       <a href="/mountains/<%= @mountain.id %>/edit" class="btn btn-warning">
@@ -134,6 +134,15 @@
         <form action="/create_photo" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for image -->
+      <div class="form-group">
+        <label for="image" class="control-label">
+          Image
+        </label>
+
+        <input type="text" id="image" name="image" placeholder="Image" class="form-control" value="">
+      </div>
 
       <!-- Label and input for user_id -->
       <input type="hidden" name="user_id" value="<%= current_user.id %>">

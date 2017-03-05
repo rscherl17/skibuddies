@@ -9,7 +9,7 @@
       <dd>
         <% if @photo.user.present? %>
           <a href="/users/<%= @photo.user_id %>">
-            <%= @photo.user.created_at %>
+            <%= @photo.user.email %>
           </a>
         <% end %>
       </dd>
@@ -26,7 +26,7 @@
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/photos" class="btn btn-primary">
+      <a href="javascript:history.back()" class="btn btn-primary">
         Back
       </a>
       <% if current_user == @photo.user %>
