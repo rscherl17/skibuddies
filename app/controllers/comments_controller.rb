@@ -71,7 +71,7 @@ class CommentsController < ApplicationController
 
       case referer
       when "/comments/#{@comment.id}/edit", "/update_comment"
-        redirect_to("/comments/#{@comment.id}", :notice => "Comment updated successfully.")
+        redirect_to("/trails/#{@comment.trail_id}", :notice => "Comment updated successfully.")
       else
         redirect_back(:fallback_location => "/", :notice => "Comment updated successfully.")
       end
