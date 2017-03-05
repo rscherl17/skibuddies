@@ -11,4 +11,6 @@ class Photo < ApplicationRecord
 
   # Validations
 
+  mount_uploader :image, ImageUploader
+
 end

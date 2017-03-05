@@ -32,6 +32,7 @@ class PhotosController < ApplicationController
     @photo = Photo.new
 
     @photo.user_id = params[:user_id]
+    @photo.image = params[:image]
     @photo.mountain_id = params[:mountain_id]
 
     save_status = @photo.save
