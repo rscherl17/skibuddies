@@ -47,7 +47,16 @@
       <li class="list-group-item list-group-item-info">
         Trails
       </li>
-
+      <li class="list-group-item">
+          <%= search_form_for @q, :url => "/mountains/#{@mountain.id}", :id => "trails_filters" do |f| %>
+              <div class="form-group">
+          <%= f.label :trail_name_cont, "Trail name contains" %>
+          <%= f.text_field :trail_name_cont, :class => "form-control", :placeholder => "Trail name contains" %>
+            <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
+            <a href="/mountains/<%= @mountain.id %>" class="btn btn-default btn-block mb-1">Clear filters</a>
+          <% end %>
+        </div>
+      </li>
       <li class="list-group-item">
         <% if current_user.admin == true %>
         <form action="/create_trail" method="post">
@@ -73,7 +82,7 @@
       <% end %>
     </form>
 
-      <% @mountain.trails.each do |trail| %>
+      <% @trails.each do |trail| %>
         <li class="list-group-item">
           <a href="/trails/<%= trail.id %>">
             <%= trail.trail_name %>
@@ -135,13 +144,15 @@
         Create Photo
       </button>
     </form>
+  </li>
 
       <% @mountain.photos.each do |photo| %>
-        <li class="list-group-item">
-          <a href="/photos/<%= photo.id %>">
+        <li class="list-group-item"><div class="row">
+          <div class="col-sm-10"><a href="/photos/<%= photo.id %>">
             <img class="img-responsive" src="<%= photo.image %>">
           </a>
-          <div class="btn-group btn-group-xs pull-right">
+              </div>
+          <div class="col-sm-2"><div class="btn-group btn-group-xs photo-buttons">
             <a href="/photos/<%= photo.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
@@ -152,9 +163,11 @@
             <% else %>
             <% end %>
           </div>
+
+        </div>
         </li>
       <% end %>
-      </li>
+
     </ul>
   </div>
 </div>

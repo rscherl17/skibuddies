@@ -1,6 +1,6 @@
 class MountainsController < ApplicationController
   def index
-    @q = Mountain.ransack(params[:q])
+    @q = Mountain.order(:mountain_name).ransack(params[:q])
     @mountains = @q.result(:distinct => true).includes(:trails, :photos).page(params[:page]).per(10)
 
     render("mountains/index.html.erb")
@@ -10,6 +10,9 @@ class MountainsController < ApplicationController
     @photo = Photo.new
     @trail = Trail.new
     @mountain = Mountain.find(params[:id])
+    @q = @mountain.trails.order(:trail_name).ransack(params[:q])
+    @trails = @q.result(:distinct => true)
+
 
     render("mountains/show.html.erb")
   end
