@@ -161,6 +161,11 @@
               <i class="fa fa-trash-o"></i>
             </a>
             <% else %>
+            <% if current_user.admin == true %>
+            <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+            <% end %>
             <% end %>
           </div>
 
