@@ -40,6 +40,11 @@
           Delete
         </a>
       <% end %>
+      <% if current_user.admin == true %>
+      <a href="/delete_comment/<%= @comment.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+      <% end %>
     </div>
   </div>
 </div>

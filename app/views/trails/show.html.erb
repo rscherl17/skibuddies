@@ -59,7 +59,11 @@
             <a href="/delete_comment/<%= comment.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
-            <% else %>
+            <% end %>
+            <% if current_user.admin == true %>
+            <a href="/delete_comment/<%= @comment.id %>" class="btn btn-danger" rel="nofollow">
+              Delete
+            </a>
             <% end %>
           </div>
           <div class = "push-right">Posted <%= time_ago_in_words(comment.created_at) %></div>
